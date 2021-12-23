@@ -26,11 +26,14 @@ builder.Services.AddDbContext<AppDBContext>(options =>
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+
+app.UseSwagger();
+app.UseSwaggerUI(swaggerUIOptions =>
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+    swaggerUIOptions.SwaggerEndpoint("/swagger/v1/swagger.json", "DevPortfolioServer UI");
+    swaggerUIOptions.RoutePrefix = string.Empty;
+});
+   
 
 app.UseHttpsRedirection();
 
