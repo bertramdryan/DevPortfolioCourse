@@ -1,0 +1,12 @@
+﻿<div class="card shadow mb-2">
+    <img src="@($"{ApiEndpoints.ServerBaseUrl}/{Category.ThumbnailImagePath}")" class="card-img-top" alt="Category thumbnail" />
+    <div class="card-body">
+        <h3 class="card-title">@Category.Name</h3>
+        <p class="card-text">@Category.Description</p>
+    </div>
+    <a href="/" class="btn btn-primary stretch-link">View Posts</a>
+</div>
+
+@code {
+    [Parameter] public Category Category { get; set; }
+}
