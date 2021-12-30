@@ -7,6 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\assets\docs\**" />
+    <Content Remove="wwwroot\assets\docs\**" />
+    <EmbeddedResource Remove="wwwroot\assets\docs\**" />
+    <None Remove="wwwroot\assets\docs\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.1" PrivateAssets="all" />
   </ItemGroup>
@@ -16,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\assets\docs" />
+    <Folder Include="wwwroot\assets\img\docs\" />
     <Folder Include="wwwroot\assets\img\skillsIcons\" />
     <Folder Include="wwwroot\assets\img\other\" />
     <Folder Include="wwwroot\assets\img\publicbackgrounds\" />
