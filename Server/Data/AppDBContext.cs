@@ -86,11 +86,11 @@ namespace Server.Data
                     ThumbnailImagePath = "uploads/placeholders.jpg",
                     Title = postTitle,
                     Excerpt =
-                        $"This is an except for {i}. An excerpt is alittle extranction from the larger piece of text. Sort of like a preview.",
-                    Content = String.Empty,
+                        $"This is an except for {i}. An excerpt is a little extranction from the larger piece of text. Sort of like a preview.",
+                    Content = string.Empty,
                     PublishDate = DateTime.UtcNow,
                     Published = true,
-                    Author = "John Doe",
+                    Author = "Ryan Bertram",
                     CategoryId = categoryId
                 };
             }
