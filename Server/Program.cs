@@ -25,11 +25,15 @@ builder.Services.AddDbContext<AppDBContext>(options =>
         );
 });
 
+builder.Services.AddAutoMapper(typeof(DtoMappings));
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 
 app.UseSwagger();
+
+
 app.UseSwaggerUI(swaggerUIOptions =>
 {
     swaggerUIOptions.SwaggerEndpoint("/swagger/v1/swagger.json", "DevPortfolioServer UI");
