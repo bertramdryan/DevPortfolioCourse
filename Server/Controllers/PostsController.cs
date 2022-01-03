@@ -57,6 +57,10 @@ namespace Server.Controllers
                     return BadRequest(ModelState);
                 }
 
+                if (postToCreate.Published)
+                {
+                    postToCreate.PublishDate = DateTime.UtcNow;
+                }
               
 
                 await _appDbContext.Posts.AddAsync(postToCreate);
@@ -92,17 +96,20 @@ namespace Server.Controllers
                     return BadRequest(ModelState);
                 }
 
-                bool exists = await _appDbContext.Posts.AnyAsync(post => post.PostId == id);
+                Post oldPost = await _appDbContext.Posts.FindAsync(id);
 
-                if (!exists)
+                if (oldPost == null)
                 {
                     return NotFound();
                 }
 
-                if (!ModelState.IsValid)
+                if (!oldPost.Published && postToUpdate.Published)
                 {
-                    return BadRequest(ModelState);
+                    postToUpdate.PublishDate = DateTime.UtcNow;
                 }
+
+                // Debatch oldpost from EF, else it can't be updated
+                _appDbContext.Entry(oldPost).State = EntityState.Detached;
 
                 _appDbContext.Posts.Update(postToUpdate);
 
@@ -114,7 +121,7 @@ namespace Server.Controllers
                 }
                 else
                 {
-                    return NoContent();
+                    return Created("Create", postToUpdate);
                 }
             }
             catch (Exception e)
