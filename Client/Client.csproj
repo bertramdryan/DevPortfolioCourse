@@ -24,6 +24,7 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\assets\img\docs\" />
+    <Folder Include="wwwroot\assets\img\admincards\" />
     <Folder Include="wwwroot\assets\img\skillsIcons\" />
     <Folder Include="wwwroot\assets\img\other\" />
     <Folder Include="wwwroot\assets\img\publicbackgrounds\" />
