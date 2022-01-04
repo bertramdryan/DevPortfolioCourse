@@ -4,7 +4,7 @@ namespace Shared.Models
 {
     public class PostDto
     {
-        [Key]
+        [Key] 
         public int PostId { get; set; }
         [Required]
         [MaxLength(256)]
