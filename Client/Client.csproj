@@ -11,6 +11,8 @@
     <Content Remove="wwwroot\assets\docs\**" />
     <EmbeddedResource Remove="wwwroot\assets\docs\**" />
     <None Remove="wwwroot\assets\docs\**" />
+    <None Remove="Components\Admin\" />
+    <None Remove="Components\Admin\Sidebar\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,6 +30,8 @@
     <Folder Include="wwwroot\assets\img\skillsIcons\" />
     <Folder Include="wwwroot\assets\img\other\" />
     <Folder Include="wwwroot\assets\img\publicbackgrounds\" />
+    <Folder Include="Components\Admin\" />
+    <Folder Include="Components\Admin\Sidebar\" />
   </ItemGroup>
 
   <ItemGroup>
