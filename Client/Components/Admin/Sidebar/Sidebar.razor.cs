@@ -21,7 +21,7 @@ namespace Client.Components.Admin.Sidebar
 
             if (pageToCheckUri == AdminIndexPageUri)
             {
-                if (currentUrisplitBetweenSlashes.Last().Length == "admin")
+                if (currentUrisplitBetweenSlashes.Last() == "admin")
                 {
                     return true;
                 }
@@ -47,5 +47,5 @@ namespace Client.Components.Admin.Sidebar
         }
     }
 }
-}
+
 
