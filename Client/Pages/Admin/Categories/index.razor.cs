@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Components;
 namespace Client.Pages.Admin.Categories
 {
 
-    public partial class index : IDisposable
+    public partial class Index : IDisposable
     {
         [Inject] InMemoryDatabaseCache InMemoryDatabaseCache { get; set; }
         protected override async Task OnInitializedAsync()
