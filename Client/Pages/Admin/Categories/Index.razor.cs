@@ -4,9 +4,10 @@ using Microsoft.AspNetCore.Components;
 namespace Client.Pages.Admin.Categories
 {
 
-    public partial class Index : IDisposable
+    public partial class Index : ComponentBase
     {
         [Inject] InMemoryDatabaseCache InMemoryDatabaseCache { get; set; }
+
         protected override async Task OnInitializedAsync()
         {
             InMemoryDatabaseCache.OnCategoriesDataChanged += StateHasChanged;

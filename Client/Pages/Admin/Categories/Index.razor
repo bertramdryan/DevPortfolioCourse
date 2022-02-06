@@ -47,6 +47,7 @@
                                         <th scope="col">Name</th>
                                         <th scope="col">Thumbnail</th>
                                         <th scope="col">Description</th>
+                                        <th scope="col">Action</th>
                                 </tr>
                             </thead>
                                 <tbody>
@@ -64,8 +65,17 @@
                                             </td>
                                             <td class="w-35">
                                                 <div class="d-flex flex-column">
-                                                    <a href="/admin/categories/update/@category.CategoryId"></a>
+                                                    <a href="/admin/categories/update/@category.CategoryId" class="btn btn-update shadow md-f-size-1-5">
+                                                        <i class="fas fa-edit"></i> Update
+                                                    </a>
+                                                    
+                                                    <br>
+                                                    
+                                                    <button class="btn btn-danger shadow md-f-size-1-5">
+                                                        <i class="fas fa-trash"></i> Delete
+                                                     </button>
                                                 </div>
+                              
                                             </td>
                                         </tr>
                                     }
