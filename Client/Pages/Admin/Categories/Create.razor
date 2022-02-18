@@ -1,3 +1,31 @@
+@page "/admin/categories/create"
 @namespace Client.Pages.Admin.Categories
+@using Client.Components.Admin.Sidebar
 
-<h3>Create</h3>
+<main class="admin-area-main">
+    <Sidebar />
+
+    <div class="admin-area-content container-fluid bg-white">
+        <div class="row g-0">
+            <div class="col">
+                <h1 class="mb-4">@(_createSuccessful ? "Success! Go back to all categories to see the created category" : "Create Category")</h1>
+
+                @if(_attemptingToCreate)
+                {
+                    <h1>Creating Category...</h1>
+                }
+                else if (!_createSuccessful && !_attemptingToCreate)
+                {
+                    <EditForm Model="_categoryToCreate" OnValidSubmit="CreateCategory">
+                        <DataAnnotationsValidator />
+                        <div class="form-group mb-5">
+                            <label for="categoryName">Category Name</label>
+                            <InputText @
+                        </div>
+                    </EditForm>
+                }
+            </div>
+        </div>
+    </div>
+
+</main>
