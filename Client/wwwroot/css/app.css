@@ -125,9 +125,7 @@ body {
         background-image: url("../assets/img/publicbackgrounds/bg-motherboard.jpg");
     }
 
-    .md-and-smaller-d-none {
-        display: none !important;
-    }
+
 }
 
 @media (min-width: 992px) {

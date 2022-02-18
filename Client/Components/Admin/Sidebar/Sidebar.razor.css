@@ -9,10 +9,14 @@
     .admin-area-sidebar {
         width: 75px;
     }
+
+    .md-and-smaller-d-none {
+        display: none !important;
+    }
 }
 
 .nav-pills .nav-link {
-    border-radius: 0px;
+    border-radius: 0;
 }
 
 .nav-pills .nav-link:hover {
