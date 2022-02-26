@@ -28,7 +28,7 @@
                             <label for="thumbnailImage">Thumbnail image (jpg/jpeg or png 1920x1080</label>
                             <img src="@($"{ApiEndpoints.ServerBaseUrl}/{_categoryToCreate.ThumbnailImagePath}")" alt="Post Thumbnail image" class="admin-crud-form-thumbnail-image">
                             <br>
-                            <InputFile class="form-control" id="thumbnailImage" />
+                            <InputFile OnChange="HandleUploadedImage" class="form-control" id="thumbnailImage" />
                         </div>
                         
                         <div class="form-group mb-5">
