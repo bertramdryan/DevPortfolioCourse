@@ -13,6 +13,7 @@
                 @if(_attemptingToCreate)
                 {
                     <h1>Creating Category...</h1>
+                    <LoadingDot />
                 }
                 else if (!_createSuccessful && !_attemptingToCreate)
                 {
@@ -26,7 +27,18 @@
                         
                         <div class="form-group mb-5">
                             <label for="thumbnailImage">Thumbnail image (jpg/jpeg or png 1920x1080</label>
-                            <img src="@($"{ApiEndpoints.ServerBaseUrl}/{_categoryToCreate.ThumbnailImagePath}")" alt="Post Thumbnail image" class="admin-crud-form-thumbnail-image">
+
+                            @if(_attemptingUploadImage)
+                            {
+                                <LoadingDot />
+                            } 
+                            else if (_attemptUploadFailed)
+                            {
+                                <h4 class="text-danger"> Failed to upload image. @_reasonImageUploadFailed</h4>
+                            } else
+                            {
+                                 <img src="@($"{ApiEndpoints.ServerBaseUrl}/{_categoryToCreate.ThumbnailImagePath}")" alt="Post Thumbnail image" class="admin-crud-form-thumbnail-image">
+                            }      
                             <br>
                             <InputFile OnChange="HandleUploadedImage" class="form-control" id="thumbnailImage" />
                         </div>
