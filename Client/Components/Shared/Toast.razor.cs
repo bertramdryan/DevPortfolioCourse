@@ -12,10 +12,16 @@ namespace Client.Components.Shared
         private string _showClass = string.Empty;
         private string _time = string.Empty;
 
-        protected void OnAfterRenderAsync()
+        protected override void OnInitialized()
         {
             _time = DateTime.Now.ToString("hh:mm:ss tt");
             _showClass = "show";
+        }
+
+        private void OnClickBtnClose()
+        {
+            _showClass = string.Empty;
+            ParentMethodToCallOnClickBtnClose.InvokeAsync();
         }
     }
 }
