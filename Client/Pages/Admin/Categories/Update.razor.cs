@@ -21,6 +21,10 @@ public partial class Update : ComponentBase
     protected async override Task OnParametersSetAsync()
     {
         _categoryToUpdate = await InMemoryDatabaseCache.GetCategoryByCategoryId(CategoryId);
+        if (_categoryToUpdate.Posts == null)
+        {
+            _categoryToUpdate.Posts = new List<Post>();
+        }
     }
 
     [Inject] HttpClient HttpClient { get; set; }

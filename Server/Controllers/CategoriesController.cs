@@ -97,6 +97,8 @@ namespace Server.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> Update([FromBody] Category categoryToUpdate, int id)
         {
+            Console.WriteLine(categoryToUpdate.Name);
+            
             try
             {
                 if (id < 1 || categoryToUpdate == null || id != categoryToUpdate.CategoryId)
