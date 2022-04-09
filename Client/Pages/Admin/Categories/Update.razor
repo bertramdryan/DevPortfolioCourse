@@ -1,0 +1,83 @@
+@page "/admin/categories/updat/{CategoryId:int"
+@namespace Client.Pages.Admin.Categories
+@using Client.Components.Admin.Sidebar
+
+<main class="admin-area-main">
+    <Sidebar />
+
+    <div class="admin-area-content container-fluid bg-white">
+        <div class="row g-0">
+            <div class="col">
+                <h1 class="mb-4">Update Category</h1>
+
+                @if (_categoryToUpdate == null || _attemptingToUpdate == true)
+                {
+                    <LoadingDot />
+                }
+                else
+                {
+                    <EditForm Model="_categoryToUpdate" OnValidSubmit="UpdateCategory">
+                        <DataAnnotationsValidator />
+
+                        <div class="form-group mb-5">
+                            <label for="categoryName">Category Name</label>
+                            <InputText @bind-Value="_categoryToUpdate.Name" class="form-control" id="categoryName"></InputText>
+                        </div>
+
+                        <div class="form-group mb-5">
+                            <label for="thumbnailImage">Thumbnail image (jpg/jpeg or png 1920x1080</label>
+
+                            @if (_attemptingUploadImage)
+                            {
+                                <LoadingDot />
+                            }
+                            else if (_attemptUploadFailed)
+                            {
+                                <h4 class="text-danger"> Failed to upload image. @_reasonImageUploadFailed</h4>
+                            }
+                            else
+                            {
+                                <img src="@($"{ApiEndpoints.ServerBaseUrl}/{_categoryToUpdate.ThumbnailImagePath}")" alt="Post Thumbnail image" class="admin-crud-form-thumbnail-image">
+                            }
+                            <br>
+                            <InputFile OnChange="HandleUploadedImage" class="form-control" id="thumbnailImage" />
+                        </div>
+
+                        <div class="form-group mb-5">
+                            <label for="categoryDescription">Category Description</label>
+                            <InputText @bind-Value="_categoryToUpdate.Description" class="form-control" id="categoryDescription"></InputText>
+                        </div>
+
+                        <ValidationSummary />
+
+                        <button class="btn bnt-success shadow d-black md-f-size-1-5" type="submit">
+                            <i class="far fa-save"></i> Save
+                        </button>
+
+                        <a href="/admin/categories" class="btn btn-primary shadow mt-5 md-f-size-1-5">
+                            <i class="fas fa-arrow-left"></i> Cancel
+                        </a>
+                    </EditForm>
+                }
+
+                <div class="position-fixed bottom-0 end-5 z-index-5">
+                    @if (_attemptingToUpdate)
+                    {
+                        <Toast IsError="true" ToastTitle="Update Failed"
+                           ToastBody="Update failed. Please try again and if the issue persists contact the administrator."
+                           ParentMethodToCallOnClickBtnClose="() => _attemptToCrateFailed = false" />
+                    }
+
+                    @if (_UpdateSuccessful)
+                    {
+                        <Toast IsError="false" ToastTitle="Update successful"
+                           ToastBody="Your changes have been saved to the database."
+                           ParentMethodToCallOnClickBtnClose="() => _attemptToCrateFailed = false" />
+                    }
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</main>

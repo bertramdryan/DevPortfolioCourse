@@ -92,11 +92,11 @@
 							ParentMethodToCallOnClickBtnClose="() => _successfullyDeletedACategory = false"	/>
 					}
 
-					@if (_unsuccessfullyTriedToDeleteACategory == true)
+					@if (_unsuccesssfullyTriedToDeleteCategory == true)
 					{
 						<Toast IsError="true" ToastTitle="Delete failed."
-							ToastBody="@($"The reason is \"{_reasonUnsuccessfullyTriedToDeleteACategory}\" Please try again and if the issue persists contact the administrator.")"
-							ParentMethodToCallOnClickBtnClose="() => _unsuccessfullyTriedToDeleteACategory = false"	/>
+							ToastBody="@($"The reason is \"{_reasonUnsuccessfullyTriredToDeleteCategory}\" Please try again and if the issue persists contact the administrator.")"
+							ParentMethodToCallOnClickBtnClose="() => _unsuccesssfullyTriedToDeleteCategory = false"	/>
 					}
 
 				</div>

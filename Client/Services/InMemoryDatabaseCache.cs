@@ -1,5 +1,6 @@
 ﻿using Client.Static;
 using Shared.Models;
+using System.Linq;
 using System.Net.Http.Json;
 
 namespace Client.Services
@@ -25,6 +26,16 @@ namespace Client.Services
                 _categories = value;
                 NotifyCategoriesDataChanged();
             }
+        }
+
+        internal async Task<Category> GetCategoryByCategoryId(int categoryId)
+        { 
+            if (_categories == null)
+            {
+                await GetCategoriesFromDatabaseAndCache();
+            }
+
+            return _categories.First<Category>(category => category.CategoryId == categoryId);
         }
 
         private bool _gettingCategoriesFromDatabaseAndCaching = false;
