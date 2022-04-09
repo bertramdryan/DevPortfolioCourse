@@ -1,4 +1,4 @@
-@page "/admin/categories/updat/{CategoryId:int"
+@page "/admin/categories/update/{CategoryId:int}"
 @namespace Client.Pages.Admin.Categories
 @using Client.Components.Admin.Sidebar
 
@@ -50,29 +50,29 @@
 
                         <ValidationSummary />
 
-                        <button class="btn bnt-success shadow d-black md-f-size-1-5" type="submit">
+                        <button class="btn btn-success shadow d-black md-f-size-1-5" type="submit">
                             <i class="far fa-save"></i> Save
                         </button>
 
-                        <a href="/admin/categories" class="btn btn-primary shadow mt-5 md-f-size-1-5">
-                            <i class="fas fa-arrow-left"></i> Cancel
-                        </a>
+						<a href="/admin/categories" class="btn btn-primary shadow mt-5 md-f-size-1-5">
+							<i class="fas fa-arrow-left"></i> Back to all categories
+						</a>
                     </EditForm>
                 }
 
-                <div class="position-fixed bottom-0 end-5 z-index-5">
-                    @if (_attemptingToUpdate)
+                <div class="position-fized bottom-0 end-5 z-index-5">
+                    @if (_attemptToUpdateFailed)
                     {
                         <Toast IsError="true" ToastTitle="Update Failed"
                            ToastBody="Update failed. Please try again and if the issue persists contact the administrator."
-                           ParentMethodToCallOnClickBtnClose="() => _attemptToCrateFailed = false" />
+                           ParentMethodToCallOnClickBtnClose="() => _attemptToUpdateFailed = false" />
                     }
 
-                    @if (_UpdateSuccessful)
+                    @if (_updateSuccessful)
                     {
                         <Toast IsError="false" ToastTitle="Update successful"
                            ToastBody="Your changes have been saved to the database."
-                           ParentMethodToCallOnClickBtnClose="() => _attemptToCrateFailed = false" />
+                           ParentMethodToCallOnClickBtnClose="() => _updateSuccessful = false" />
                     }
                 </div>
 

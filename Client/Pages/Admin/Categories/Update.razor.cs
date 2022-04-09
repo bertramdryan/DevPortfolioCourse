@@ -26,8 +26,8 @@ public partial class Update : ComponentBase
     [Inject] HttpClient HttpClient { get; set; }
 
     private bool _attemptingToUpdate = false;
-    private bool _attemptToCrateFailed = false;
-    private bool _UpdateSuccessful = false;
+    private bool _attemptToUpdateFailed = false;
+    private bool _updateSuccessful = false;
 
     private async Task UpdateCategory()
     {
@@ -40,11 +40,11 @@ public partial class Update : ComponentBase
             Category unupdatedCategoryInList = InMemoryDatabaseCache.Categories.Single<Category>(category => category.CategoryId == CategoryId);
             UtilityFunctions.CopyObjectProperties(_categoryToUpdate, unupdatedCategoryInList);
 
-            _UpdateSuccessful = true;
+            _updateSuccessful = true;
         }
         else
         {
-            _attemptToCrateFailed = true;
+            _attemptToUpdateFailed = true;
         }        
     }
 
