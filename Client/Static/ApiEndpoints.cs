@@ -8,7 +8,11 @@
         internal const string ServerBaseUrl = "https://devportfoliobert.azurewebsites.net";
 #endif
 
-        internal readonly static string s_catetories = $"{ServerBaseUrl}/api/Categories";
+        internal readonly static string s_catetories = $"{ServerBaseUrl}/api/categories";
+        internal readonly static string s_catetoriesWithPosts = $"{ServerBaseUrl}/api/categories/withposts";
+        internal readonly static string s_posts = $"{ServerBaseUrl}/api/posts";
+        internal readonly static string s_postsDto = $"{ServerBaseUrl}/api/categories/posts/dto";
         internal readonly static string s_imageUpload = $"{ServerBaseUrl}/api/ImageUpload";
+        internal readonly static string s_signIn = $"{ServerBaseUrl}/api/signin";
     }
 }

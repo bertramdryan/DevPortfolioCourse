@@ -34,6 +34,15 @@ namespace Server.Controllers
             return Ok(posts);
         }
 
+        [HttpGet("dto/{id}")]
+        public async Task<IActionResult> GetDto(int id)
+        {
+            Post post = await GetPostById(id);
+            PostDto postDto = _mapper.Map<PostDto>(post);
+
+            return Ok(postDto);
+        }
+
         // website.com/api/posts/2
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
