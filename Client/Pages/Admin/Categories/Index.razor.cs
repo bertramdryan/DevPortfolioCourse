@@ -17,7 +17,7 @@ namespace Client.Pages.Admin.Categories
 
             if (InMemoryDatabaseCache.Categories == null)
             {
-                await InMemoryDatabaseCache.GetCategoriesFromDatabaseAndCache();
+                await InMemoryDatabaseCache.GetCategoriesFromDatabaseAndCache(false);
             }
 
         }
