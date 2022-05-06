@@ -91,7 +91,7 @@ namespace Client.Services
 
                 if (withPosts)
                 {
-                    categoriesFromDatabase = await _httpClient.GetFromJsonAsync<List<Category>>(ApiEndpoints.s_catetories);
+                    categoriesFromDatabase = await _httpClient.GetFromJsonAsync<List<Category>>(ApiEndpoints.s_catetoriesWithPosts);
                 }
                 else
                 {

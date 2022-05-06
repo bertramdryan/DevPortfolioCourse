@@ -1,0 +1,99 @@
+@page "/admin/posts/create"
+@namespace Client.Pages.Admin.PostCreate
+@using Client.Components.Admin.Sidebar
+
+<main class="admin-area-main">
+    <Sidebar />
+
+    <div class="admin-area-content container-fluid bg-white">
+        <div class="row g-0">
+            <div class="col">
+                <h1 class="mb-4">@(_createSuccessful ? "Success! Go back to all posts to see the created post" : "Create Post")</h1>
+
+                @if (_attemptingToCreate)
+                {
+                    <h1>Creating Post...</h1>
+                    <LoadingDot />
+                }
+                else if (!_createSuccessful && !_attemptingToCreate)
+                {
+                    <EditForm Model="_postToCreate" OnValidSubmit="CreatePost">
+                        <DataAnnotationsValidator />
+
+                        @if (InMemoryDatabaseCache.Categories == null)
+                        {
+                            <LoadingDot />
+                        }
+                        else
+                        {
+                            <div class=form-group mb-5>
+                                <label for="postCategory">Category</label>
+                                <InputSelect @bind-Value="@_postToCreate.CategoryId" class="form_control" id="postCategory">
+                                    @foreach (var category in InMemoryDatabaseCache.Categories)
+                                    {
+                                <option value="@category.CategoryId">@category.Name</option>
+                                    }
+                        </InputSelect>
+                    </div>
+                        }
+
+                        <div class="form-group mb-5">
+                            <label for="postTitle">Post Title</label>
+                            <InputText @bind-Value="_postToCreate.Title" class="form-control" id="postTitle"></InputText>
+                        </div>
+
+                        <div class="form-group mb-5">
+                            <label for="thumbnailImage">Thumbnail image (jpg/jpeg or png 1920x1080</label>
+
+                            @if (_attemptingUploadImage)
+                            {
+                                <LoadingDot />
+                            }
+                            else if (_attemptUploadFailed)
+                            {
+                                <h4 class="text-danger"> Failed to upload image. @_reasonImageUploadFailed</h4>
+                            }
+                            else
+                            {
+                                <img src="@($"{ApiEndpoints.ServerBaseUrl}/{_postToCreate.ThumbnailImagePath}")" alt="Post Thumbnail image" class="admin-crud-form-thumbnail-image">
+                            }
+                            <br>
+                            <InputFile OnChange="HandleUploadedImage" class="form-control" id="thumbnailImage" />
+                        </div>
+
+                        <div class="form-group mb-5">
+                            <label for="postExcerpt">Post Excerpt</label>
+                            <InputText @bind-Value="_postToCreate.Excerpt" class="form-control" id="postExcerpt"></InputText>
+                        </div>
+
+                        <div class="form-group mb-5">
+                            <label for="postAutho">Post Author</label>
+                            <InputText @bind-Value="_postToCreate.Author" class="form-control" id="postExcerpt"></InputText>
+                        </div>
+
+                        <div class="form-group mb-5">
+                            <label for="postPublished"></label>
+                            <InputCheckbox @bind-Value="_postToCreate.Published" class="form-check-input" id="postPublished" aria-describedby="postpublishedHelp"/>
+                            <div id="postPublishedHelp" class="form-text">
+                                The value of this specifies wther this blog post is visable on the user facing side or not.
+                                Publishing a blog post also updates the values of the published date.
+                            </div>
+                        </div>
+
+
+                        <ValidationSummary />
+
+                        <button class="btn bnt-success shadow d-black md-f-size-1-5" type="submit">
+                            <i class="far fa-save"></i> Save
+                        </button>
+                    </EditForm>
+                }
+
+                <a href="/admin/posts" class="btn btn-primary shadow mt-5 md-f-size-1-5">
+                    <i class="fas fa-arrow-left"></i> Back to Posts
+                </a>
+            </div>
+        </div>
+    </div>
+
+</main>

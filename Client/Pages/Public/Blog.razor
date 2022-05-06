@@ -37,7 +37,7 @@
 
         if (InMemoryDatabaseCache.Categories == null)
         {
-            await InMemoryDatabaseCache.GetCategoriesFromDatabaseAndCache(false);
+            await InMemoryDatabaseCache.GetCategoriesFromDatabaseAndCache(true);
         }
     }
 
